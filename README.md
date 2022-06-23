@@ -1,1 +1,1 @@
-# AngularBasics
+# Angular - Recipe Book
