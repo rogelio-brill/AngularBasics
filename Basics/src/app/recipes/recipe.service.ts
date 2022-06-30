@@ -8,12 +8,24 @@ export class RecipeService {
     recipeSelected = new EventEmitter<Recipe>();
 
    private recipes: Recipe[] = [
-        new Recipe('Pizza', 'Dough, tomato sauce, cheese', 
-        'https://files.liveworksheets.com/def_files/2020/10/3/1003050249676828/1003050249676828001.jpg',
+        new Recipe('Pizza', 'Best pizza recipe from Italy!', 
+        'https://images.getrecipekit.com/20220211142347-margherita-9920.jpg',
         [
-          new Ingredient('Dough', 2),
+          new Ingredient('Dough', 1),
           new Ingredient('Tomatoes', 4),
-          new Ingredient('Cheese', 3)
+          new Ingredient('Cheese', 3),
+          new Ingredient('Basil', 4)
+        ]),
+        new Recipe('Hamburger', 'Best hamburger recipe from United States!', 
+        'https://tastesbetterfromscratch.com/wp-content/uploads/2020/06/Classic-Juicy-Hamburger-Recipe-Square.jpg',
+        [
+          new Ingredient('Bread', 2),
+          new Ingredient('Pickles', 2),
+          new Ingredient('Onion', 1),
+          new Ingredient('Tomatoes', 2),
+          new Ingredient('Lettuce', 2),
+          new Ingredient('Cheese', 1),
+          new Ingredient('Beef Patty', 1)
         ])
       ];
 
@@ -21,6 +33,10 @@ export class RecipeService {
 
     getRecipes() {
         return this.recipes.slice();
+    }
+
+    getRecipe(id: number) {
+      return this.recipes[id];
     }
 
     addIngredientsToShoppingList(ingredients: Ingredient[]) {
