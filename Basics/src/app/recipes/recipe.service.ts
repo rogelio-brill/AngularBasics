@@ -8,29 +8,36 @@ import { Recipe } from "./recipe.model";
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
-   private recipes: Recipe[] = [
-        new Recipe('Pizza', 'Best pizza recipe from Italy!', 
-        'https://images.getrecipekit.com/20220211142347-margherita-9920.jpg',
-        [
-          new Ingredient('Dough', 1),
-          new Ingredient('Tomatoes', 4),
-          new Ingredient('Cheese', 3),
-          new Ingredient('Basil', 4)
-        ]),
-        new Recipe('Hamburger', 'Best hamburger recipe from United States!', 
-        'https://tastesbetterfromscratch.com/wp-content/uploads/2020/06/Classic-Juicy-Hamburger-Recipe-Square.jpg',
-        [
-          new Ingredient('Bread', 2),
-          new Ingredient('Pickles', 2),
-          new Ingredient('Onion', 1),
-          new Ingredient('Tomatoes', 2),
-          new Ingredient('Lettuce', 2),
-          new Ingredient('Cheese', 1),
-          new Ingredient('Beef Patty', 1)
-        ])
-      ];
+  //  private recipes: Recipe[] = [
+  //       new Recipe('Pizza', 'Best pizza recipe from Italy!', 
+  //       'https://images.getrecipekit.com/20220211142347-margherita-9920.jpg',
+  //       [
+  //         new Ingredient('Dough', 1),
+  //         new Ingredient('Tomatoes', 4),
+  //         new Ingredient('Cheese', 3),
+  //         new Ingredient('Basil', 4)
+  //       ]),
+  //       new Recipe('Hamburger', 'Best hamburger recipe from United States!', 
+  //       'https://tastesbetterfromscratch.com/wp-content/uploads/2020/06/Classic-Juicy-Hamburger-Recipe-Square.jpg',
+  //       [
+  //         new Ingredient('Bread', 2),
+  //         new Ingredient('Pickles', 2),
+  //         new Ingredient('Onion', 1),
+  //         new Ingredient('Tomatoes', 2),
+  //         new Ingredient('Lettuce', 2),
+  //         new Ingredient('Cheese', 1),
+  //         new Ingredient('Beef Patty', 1)
+  //       ])
+  //     ];
+
+    private recipes: Recipe[] = [];
 
     constructor(private slService: ShoppingListService) { }  
+
+    setRecipes(recipes: Recipe[]) {
+      this.recipes = recipes;
+      this.recipesChanged.next(this.recipes.slice());
+    } 
 
     getRecipes() {
         return this.recipes.slice();
